@@ -1,115 +1,132 @@
 # WordWeaver
 
-**WordWeaver** is a deep learning model designed to generate text character by character. Using a sequence-to-sequence neural network, this model learns patterns in text data and generates new words, similar to the way humans compose sentences.
+**WordWeaver** is a character-level text generation model designed for learning and generating text patterns. Currently, the model is trained on a dataset of popular names, making it ideal for generating new name suggestions or exploring text generation capabilities.
 
-This repository contains the implementation of the model, training scripts, and instructions to run the project locally.
+This repository includes an interactive Jupyter Notebook (`wordweaver.ipynb`) that implements the model, prepares the dataset, trains the neural network, and generates text outputs.
 
 ---
 
 ## Features
 
-- **Character-level text generation**: The model generates text based on the input sequence of characters.
-- **Customizable model architecture**: The neural network architecture can be customized for various text generation tasks.
-- **Training on your own dataset**: Easily train the model on any text dataset.
-
----
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/wordweaver-model.git
-   cd wordweaver-model
-   ```
-
-2. Set up a virtual environment (optional but recommended):
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install the required dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
+- **Character-level text generation**: Learn patterns from sequences of characters to generate new names.
+- **Custom neural network design**: Includes flexible and modular layers such as `BatchNorm1d`, `FlattenConsecutive`, and `Sequential`.
+- **Interactive and customizable**: Modify the dataset, model architecture, or hyperparameters within the notebook.
+- **Trained on a names dataset**: Works with a curated dataset of names for generation.
 
 ---
 
 ## Dataset
 
-This model is designed to work with character-level text datasets. You can use any text data, such as books, articles, or even your own corpus of text.
+The model operates on a dataset of popular names, such as:
 
-To prepare your dataset:
-- Ensure that the text data is cleaned and formatted as a list of words or sentences.
-- The text data should be stored in a plain `.txt` file.
+```plaintext
+emma
+olivia
+ava
+isabella
+sophia
+charlotte
+mia
+amelia
+harper
+evelyn
+abigail
+emily
+```
+
+### Dataset Format:
+- A plain text file (`.txt`) where each line contains a single name.
+- The dataset includes a special end token (`.`) that signifies the end of a name.
+
+You can replace this dataset with your own, provided it follows a similar format.
 
 ---
 
-## Training the Model
+## Installation and Setup
 
-### 1. Prepare Your Dataset:
-- Place your `.txt` dataset in the `data/` directory.
-
-### 2. Training:
-To start training, run the following command:
-
+### 1. Clone the Repository
 ```bash
-python train.py --dataset data/your-dataset.txt --epochs 10 --batch_size 32
+git clone https://github.com/your-username/wordweaver.git
+cd wordweaver
 ```
 
-Adjust the `epochs` and `batch_size` parameters as needed.
-
-### 3. Evaluate the Model:
-After training, you can evaluate the model on the validation set:
-
+### 2. Install Dependencies
+(Optional but recommended) Create a virtual environment:
 ```bash
-python evaluate.py --model saved_model.pth
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
+
+Install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch Jupyter Notebook
+Start the notebook server:
+```bash
+jupyter notebook
+```
+
+Open `wordweaver.ipynb` from the notebook interface.
 
 ---
 
-## Generating Text
+## Using the Notebook
 
-Once the model is trained, you can generate text based on a given prompt.
+### 1. Load the Dataset
+The dataset is already provided in the notebook. You can replace it with your own dataset of names or other sequences by modifying the `words` list.
 
-To generate text:
+### 2. Train the Model
+Run the training cells in the notebook. The key parameters include:
+- **Block Size**: Determines the number of previous characters used as context for predicting the next character.
+- **Embedding Size**: Dimensionality of the character embeddings.
+- **Hidden Neurons**: Number of neurons in the fully connected layers.
 
-```bash
-python generate.py --model saved_model.pth --prompt "Once upon a time"
+### 3. Generate Names
+Once trained, the model generates new names character by character. Simply run the generation cells to see the results.
+
+Example generated output:
+```plaintext
+emma
+sophial
+amelianna
+harpe.
+olivialyn
 ```
-
-The model will generate text that continues the prompt based on the learned patterns.
 
 ---
 
 ## Model Architecture
 
-The model consists of the following components:
-1. **Embedding Layer**: Converts characters into dense vectors.
-2. **Fully Connected Layers**: A series of hidden layers with batch normalization and activation functions.
-3. **Output Layer**: Produces logits for each character in the vocabulary.
+The model architecture includes:
+1. **Embedding Layer**: Encodes characters into dense vectors.
+2. **Hidden Layers**:
+   - Custom `FlattenConsecutive` layers to reduce input dimensions.
+   - Fully connected layers with batch normalization and `tanh` activations.
+3. **Output Layer**: Predicts probabilities for the next character.
 
 ---
 
-## Hyperparameters
+## Training Details
 
-- **embedding size**: 24
-- **hidden layer size**: 128
-- **block size (sequence length)**: 8
-- **learning rate**: 0.1 (decays after 150,000 steps)
+- **Loss Function**: Cross-entropy loss for character-level prediction.
+- **Optimizer**: Stochastic Gradient Descent (SGD) with dynamic learning rate adjustment.
+- **Hyperparameters**:
+  - Block size: `8`
+  - Embedding size: `24`
+  - Hidden layer size: `128`
+  - Initial learning rate: `0.1`, decays to `0.01` after 150,000 steps.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
 ## Acknowledgments
 
-- PyTorch for providing the deep learning framework.
-- All datasets used in this project.
+- PyTorch for providing a robust deep learning framework.
+- The dataset of popular names used in this example for training.
