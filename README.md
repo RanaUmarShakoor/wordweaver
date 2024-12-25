@@ -120,12 +120,6 @@ The model architecture includes:
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
 ## Acknowledgments
 
 - PyTorch for providing a robust deep learning framework.
