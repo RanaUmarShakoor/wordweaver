@@ -1,6 +1,6 @@
 # WordWeaver
 
-**WordWeaver** is a character-level text generation model designed for learning and generating text patterns. Currently, the model is trained on a dataset of popular names, making it ideal for generating new name suggestions or exploring text generation capabilities.
+**WordWeaver** is a character-level name generation model designed for learning and generating text patterns. Currently, the model is trained on a dataset of popular names, making it ideal for generating new name suggestions or exploring text generation capabilities.
 
 This repository includes an interactive Jupyter Notebook (`wordweaver.ipynb`) that implements the model, prepares the dataset, trains the neural network, and generates text outputs.
 
@@ -8,7 +8,7 @@ This repository includes an interactive Jupyter Notebook (`wordweaver.ipynb`) th
 
 ## Features
 
-- **Character-level text generation**: Learn patterns from sequences of characters to generate new names.
+- **Character-level name generation**: Learn patterns from sequences of characters to generate new names.
 - **Custom neural network design**: Includes flexible and modular layers such as `BatchNorm1d`, `FlattenConsecutive`, and `Sequential`.
 - **Interactive and customizable**: Modify the dataset, model architecture, or hyperparameters within the notebook.
 - **Trained on a names dataset**: Works with a curated dataset of names for generation.
