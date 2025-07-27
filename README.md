@@ -50,7 +50,7 @@ git clone https://github.com/your-username/wordweaver.git
 cd wordweaver
 ```
 
-### 3. Launch Jupyter Notebook
+### 2. Launch Jupyter Notebook
 Start the notebook server:
 ```bash
 jupyter notebook
