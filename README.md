@@ -50,18 +50,6 @@ git clone https://github.com/your-username/wordweaver.git
 cd wordweaver
 ```
 
-### 2. Install Dependencies
-(Optional but recommended) Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-Install the required packages:
-```bash
-pip install -r requirements.txt
-```
-
 ### 3. Launch Jupyter Notebook
 Start the notebook server:
 ```bash
